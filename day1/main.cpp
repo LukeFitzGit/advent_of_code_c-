@@ -50,4 +50,3 @@ int main() {
     std::cout << top3;
     return 0;
 }
-
