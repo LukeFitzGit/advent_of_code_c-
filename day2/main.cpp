@@ -18,8 +18,8 @@ class Shape {
         char losesAgainst;
 };
 
-Shape GetShape(char character){
-    switch (character){
+Shape GetShape(char* character){
+    switch (*character){
         case 'X': return Shape('A', 'Z', 1, 'Y'); //rock
         case 'Y': return Shape('B', 'X', 2, 'Z'); //paper
         case 'Z': return Shape('C', 'Y', 3, 'X'); //scissors
@@ -44,8 +44,8 @@ int main(){
 
     int points = 0;
     for (std::string i : gestureVec){ 
-        Shape opponents = GetShape(i[0]);
-        Shape my = GetShape(i[2]);
+        Shape opponents = GetShape(&i[0]);
+        Shape my = GetShape(&i[2]);
         if (my.character == opponents.losesAgainst){
             points += my.winPoints + 6;
         }
@@ -60,13 +60,13 @@ int main(){
 
     int pointsTwo = 0;
     for (std::string i : gestureVec){ 
-        Shape opponent = GetShape(i[0]);
+        Shape opponent = GetShape(&i[0]);
         if(i[2] == 'X'){
-            Shape myChoice = GetShape(opponent.winsAgainst);
+            Shape myChoice = GetShape(&opponent.winsAgainst);
             pointsTwo += myChoice.winPoints;
         }
         else if(i[2] == 'Z'){
-            Shape myChoice = GetShape(opponent.losesAgainst);
+            Shape myChoice = GetShape(&opponent.losesAgainst);
             pointsTwo += myChoice.winPoints + 6;
         }
         else {

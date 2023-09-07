@@ -3,7 +3,7 @@
 #include<vector>
 #include<fstream>
 #include<algorithm>
-#include<unordered_set>
+#include<unordered_set> 
 
 char GetCommonCharacter(std::string& firstPart, std::string& secPart, std::string thirdPart = ""){
     std::unordered_set<char> firstString(firstPart.begin(), firstPart.end());
